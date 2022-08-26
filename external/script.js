@@ -47,14 +47,15 @@ function compChoice() {
   return Math.trunc((perfomance + random) % 3);
 }
 
-function showMsg(msg){
+function showMsg(msg) {
   messageEl.innerHTML = msg;
-  setTimeout(()=>{
+  setTimeout(() => {
     messageEl.innerHTML = "Choose Rock, Paper or Scissors to start!";
-  },2000)
+  }, 4000);
 }
 
 function gameRules(player, comp) {
+  const values = ["Rock", "Paper", "Scissors"];
   if (player === comp) {
     showMsg("Draw!");
     return;
@@ -64,10 +65,10 @@ function gameRules(player, comp) {
     (player === 1 && comp === 0) ||
     (player === 2 && comp === 1)
   ) {
-    showMsg("You win!");
+    showMsg(`You win! ${values[player]} beats ${values[comp]}`);
     return true;
   } else {
-    showMsg("You lose!");
+    showMsg(`You lose! ${values[comp]} beats ${values[player]}`);
     return false;
   }
 }
