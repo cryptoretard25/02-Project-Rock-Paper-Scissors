@@ -1,8 +1,10 @@
 const { log } = console;
 
+const btnContainer = document.querySelector("div.container.pick");
 const btnRock = document.querySelector(".button.rock");
 const btnPaper = document.querySelector(".button.paper");
 const btnScissors = document.querySelector(".button.scissors");
+const btnNewgame = document.querySelector(".button.newgame");
 
 const messageEl = document.querySelector(".msg");
 
@@ -11,6 +13,9 @@ const playerScore = document.querySelector("#player-score");
 
 const playerContainer = document.querySelector(".container.player");
 const compContainer = document.querySelector(".container.computer");
+const mainContainer = document.querySelector("div.container.main");
+const body = document.querySelector("body");
+const newgame = document.querySelector(".container.newgame");
 
 const values = [
   `<img class="rock" src="./images/rock.png" alt="">`,
@@ -22,6 +27,10 @@ Object.freeze(values);
 btnRock.addEventListener("click", showRock);
 btnPaper.addEventListener("click", showPaper);
 btnScissors.addEventListener("click", showScissors);
+
+btnNewgame.addEventListener("click", () => {
+  window.location.reload();
+});
 
 const perfomance = performance.now();
 playerScore.innerHTML = +0;
@@ -48,16 +57,20 @@ function compChoice() {
 }
 
 function showMsg(msg) {
+  console.time("Buttons hidden");
+  btnContainer.style.display = "none";
   messageEl.innerHTML = msg;
   setTimeout(() => {
     messageEl.innerHTML = "Choose Rock, Paper or Scissors to start!";
-  }, 4000);
+    btnContainer.style.display = "flex";
+    console.timeEnd("Buttons hidden");
+  }, 3000);
 }
 
 function gameRules(player, comp) {
   const values = ["Rock", "Paper", "Scissors"];
   if (player === comp) {
-    showMsg("Draw!");
+    showMsg(`Draw! Both players thrown ${values[player]}`);
     return;
   }
   if (
@@ -84,4 +97,21 @@ function renderGame(playerPick) {
   playerContainer.innerHTML = values[playerPick];
   compContainer.innerHTML = values[random];
   updateScore(result);
+  gameOver();
+}
+
+function gameOver() {
+  const player = +playerScore.innerHTML;
+  const computer = +compScore.innerHTML;
+  if (player === 5) {
+    mainContainer.style.display = "none";
+    document.querySelector(".newgame-h1").innerHTML = "Game over. You won!";
+    body.style.justifyContent = "center";
+    newgame.style.display = "flex";
+  } else if (computer === 5) {
+    mainContainer.style.display = "none";
+    document.querySelector(".newgame-h1").innerHTML = "Game over. You won!";
+    body.style.justifyContent = "center";
+    newgame.style.display = "flex";
+  }
 }
