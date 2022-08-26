@@ -29,30 +29,17 @@ compScore.innerHTML = +0;
 
 function showRock() {
   const playerPick = 0;
-  const random = compChoice();
-  const result = gameRules(playerPick, random);
-  console.log(result);
-  updateScore(result);
-  playerContainer.innerHTML = values[playerPick];
-  compContainer.innerHTML = values[random];
+  renderGame(playerPick);
 }
 
 function showPaper() {
   const playerPick = 1;
-  const random = compChoice();
-  const result = gameRules(playerPick, random);
-  updateScore(result);
-  playerContainer.innerHTML = values[playerPick];
-  compContainer.innerHTML = values[random];
+  renderGame(playerPick);
 }
 
 function showScissors() {
   const playerPick = 2;
-  const random = compChoice();
-  const result = gameRules(playerPick, random);
-  updateScore(result);
-  playerContainer.innerHTML = values[playerPick];
-  compContainer.innerHTML = values[random];
+  renderGame(playerPick);
 }
 
 function compChoice() {
@@ -60,9 +47,16 @@ function compChoice() {
   return Math.trunc((perfomance + random) % 3);
 }
 
+function showMsg(msg){
+  messageEl.innerHTML = msg;
+  setTimeout(()=>{
+    messageEl.innerHTML = "Choose Rock, Paper or Scissors to start!";
+  },2000)
+}
+
 function gameRules(player, comp) {
   if (player === comp) {
-    messageEl.innerHTML = "Draw!";
+    showMsg("Draw!");
     return;
   }
   if (
@@ -70,10 +64,10 @@ function gameRules(player, comp) {
     (player === 1 && comp === 0) ||
     (player === 2 && comp === 1)
   ) {
-    messageEl.innerHTML = "You win!";
+    showMsg("You win!");
     return true;
   } else {
-    messageEl.innerHTML = "You lose!";
+    showMsg("You lose!");
     return false;
   }
 }
@@ -81,4 +75,12 @@ function gameRules(player, comp) {
 function updateScore(bool) {
   if (bool === undefined) return;
   bool ? playerScore.innerHTML++ : compScore.innerHTML++;
+}
+
+function renderGame(playerPick) {
+  const random = compChoice();
+  const result = gameRules(playerPick, random);
+  playerContainer.innerHTML = values[playerPick];
+  compContainer.innerHTML = values[random];
+  updateScore(result);
 }
