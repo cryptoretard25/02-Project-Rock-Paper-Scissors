@@ -3,16 +3,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Lucida Console";
-    font-size: 16px;
+  font-size: 16px;
   font-weight: 600;
 }
 
-body{
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
+body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
 img {
@@ -23,7 +23,7 @@ img {
 button {
   box-shadow: 1px 0px 8px 0px rgba(34, 60, 80, 0.2);
   color: black;
-  background-color:white;
+  background-color: white;
   border: solid 2px black;
   border-radius: 5px;
   height: 50px;
@@ -32,12 +32,17 @@ button {
 
 button:active {
   vertical-align: top;
+  background-color: rgba(220, 220, 220, 0.938);
+}
+
+button:hover {
+  vertical-align: top;
   background-color: gainsboro;
 }
 
-h1{
- font-size: 1.5rem;   
- font-weight: bold;
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .container {
@@ -45,53 +50,57 @@ h1{
   justify-content: center;
   align-items: center;
   width: 600px;
-
 }
 .rotate {
   transform: rotate(180deg);
 }
-.container.score{
-    flex-direction: column;
-    height: 5rem;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 20rem;
+.container.score {
+  flex-direction: column;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 20rem;
 }
 
-.container.pick{
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
+.container.pick {
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-.player-img{
-    display: none;
+.player-img {
+  display: none;
 }
 
-.computer-img{
-    display: none;
+.computer-img {
+  display: none;
 }
-.container.msg{
-    color: red;
+.container.msg {
+  color: black;
 }
-div.container.main{
-    padding: 20px;
-    border: 3px solid black;
-    border-radius: 15px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px
+div.container.main {
+  padding: 20px;
+  border: 3px solid black;
+  border-radius: 15px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
-.container.newgame{
-    display: none;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+.container.newgame {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.container.computer {
+  display: none;
+}
+.container.player {
+  display: none;
 }

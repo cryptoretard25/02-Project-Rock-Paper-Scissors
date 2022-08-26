@@ -59,8 +59,10 @@ function compChoice() {
 function showMsg(msg) {
   console.time("Buttons hidden");
   btnContainer.style.display = "none";
+  messageEl.style.color = "red";
   messageEl.innerHTML = msg;
   setTimeout(() => {
+    messageEl.style.color = "black";
     messageEl.innerHTML = "Choose Rock, Paper or Scissors to start!";
     btnContainer.style.display = "flex";
     console.timeEnd("Buttons hidden");
@@ -94,7 +96,9 @@ function updateScore(bool) {
 function renderGame(playerPick) {
   const random = compChoice();
   const result = gameRules(playerPick, random);
+  playerContainer.style.display = 'flex';
   playerContainer.innerHTML = values[playerPick];
+  compContainer.style.display = "flex";
   compContainer.innerHTML = values[random];
   updateScore(result);
   gameOver();
@@ -105,12 +109,12 @@ function gameOver() {
   const computer = +compScore.innerHTML;
   if (player === 5) {
     mainContainer.style.display = "none";
-    document.querySelector(".newgame-h1").innerHTML = "Game over. You won!";
+    document.querySelector(".newgame-h1").innerHTML = "Game over! You won!";
     body.style.justifyContent = "center";
     newgame.style.display = "flex";
   } else if (computer === 5) {
     mainContainer.style.display = "none";
-    document.querySelector(".newgame-h1").innerHTML = "Game over. You won!";
+    document.querySelector(".newgame-h1").innerHTML = "Game over! Computer wins.";
     body.style.justifyContent = "center";
     newgame.style.display = "flex";
   }
