@@ -91,7 +91,7 @@ div.container.main {
   gap: 20px;
 }
 .container.newgame {
-    padding: 20px;
+  padding: 20px;
   border: 3px solid black;
   border-radius: 15px;
   display: none;
@@ -105,5 +105,9 @@ div.container.main {
   display: none;
 }
 .container.player {
+  display: flex;
+}
+
+div.images {
   display: none;
 }
